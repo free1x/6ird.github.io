@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>使用acme申请免费google ssl证书</title>
+      <link href="//post/acme-google-ssl.html"/>
+      <url>//post/acme-google-ssl.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/06/10/JfvtH4SDcx9EMwn.png" alt="google-ssl"></p><p>###获取Google account key</p><p>首先登录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://console.cloud.google.com/apis/library/publicca.googleapis.com?project=XXXXX</span><br></pre></td></tr></table></figure><p>如果没有权限就点启用,然后点右上角的激活 cloud shell ,成功授权后在 Cloud Shell 获取需要签发的key 输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcloud beta publicca external-account-keys create</span><br></pre></td></tr></table></figure><p>复制，如下key:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Created an external account key [b64MacKey: XXXXXXXXXXXX keyId: XXXXXXX]</span><br></pre></td></tr></table></figure><p>###下载acme</p><p>下载命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O- https://get.acme.sh | sh</span><br></pre></td></tr></table></figure><p>重新加载:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure><p>###修改acme默认服务为google</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --set-default-ca --server google</span><br></pre></td></tr></table></figure><p>###写入Google key</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --register-account -m www@mail.com --server google</span><br><span class="line">--eab-kid XXXXXX</span><br><span class="line">--eab-hmac-key XXXX</span><br></pre></td></tr></table></figure><p>###导入dns服务商key（CF为例）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CF_Key=<span class="string">&quot;XXXX&quot;</span></span><br><span class="line"><span class="built_in">export</span> CF_Email=<span class="string">&quot;www@mail.com&quot;</span></span><br></pre></td></tr></table></figure><p>###申请证书</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --issue --dns dns_cf -d XXXX.com -d *.XXXX.com</span><br></pre></td></tr></table></figure><p>###迁移证书到指定文件夹</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --installcert -d XXXX.com</span><br><span class="line">--key-file /home/vhost/cert/XXXX.com/XXXX.com.key</span><br><span class="line">--fullchain-file /home/vhost/cert/XXXX.com/XXXX.com.cer</span><br><span class="line">--reloadcmd <span class="string">&quot;/usr/sbin/nginx -s reload -c /etc/nginx/nginx.conf&quot;</span></span><br></pre></td></tr></table></figure><p>###更新证书命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">acme.sh --renew -d XXXX.com --force</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> acme </tag>
+            
+            <tag> google </tag>
+            
+            <tag> ssl </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>zerotier在openwrt旁路由模式配置</title>
       <link href="//post/zerotier_openwrt.html"/>
       <url>//post/zerotier_openwrt.html</url>
