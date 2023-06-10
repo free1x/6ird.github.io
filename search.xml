@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>最新百度网盘不限速下载插件 (油猴脚本)，同时支持其他各大网盘</title>
+      <link href="//post/baidupan_scripts.html"/>
+      <url>//post/baidupan_scripts.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2023/06/10/1y4ZiOcHo5DPjbu.png" alt="百度网盘"></p><p>以「百度网盘」实际使用为例，对于免费用户，通过脚本获取到真实下载链接下载，速度很多时候都能感受到有所提升，但如果你希望用插件后能白嫖到稳如 SVIP 的速度，那还是贪心了。这个“不限速”只是相对的，因此，依旧建议经常下载的同学开通超级会员，确实稳定太多而且基本都能做到满速下载。同样的，其他如迅雷网盘、阿里云盘、天翼云盘等等大多也都是如此。</p><p>【<strong>网盘直链下载助手</strong>】是一款免费开源获取百度网盘和阿里云盘文件真实下载地址的油猴脚本，基于 PCSAPI，支持 Windows，Mac，Linux 等多平台，支持 IDM，XDown，Aria2 等多线程下载工具，支持 JSON-RPC 协议远程下载，支持 cURL 命令下载。</p><p>支持下面六大网盘：百度网盘, 阿里云盘, 天翼云盘, 迅雷云盘, 夸克网盘, 移动云盘</p><h3 id="安装助手"><a href="#安装助手" class="headerlink" title="安装助手"></a>安装助手</h3><p>请确保已先安装 <a href="https://www.tampermonkey.net/">Tampermonkey </a>脚本管理器，再安装「网盘直链下载助手」脚本。成功安装之后，你打开百度网盘、迅雷云盘、阿里云盘等网页版之后，就会看到多出一个「下载助手」的按钮</p><p><strong>网盘直链下载助手</strong>： <a class="btn-anzhiyu outline" href="https://greasyfork.org/scripts/436446-%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B/code/%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B.user.js"   title="安装脚本"><i class="anzhiyufont anzhiyu-icon-circle-arrow-right"></i><span>安装脚本</span></a></p><h3 id="突破限速-amp-SVIP-会员"><a href="#突破限速-amp-SVIP-会员" class="headerlink" title="突破限速 &amp; SVIP 会员"></a>突破限速 &amp; SVIP 会员</h3><p>尽管网盘直链下载助手以及这一类插件很多都有标榜“不限速、免 SVIP 超级会员、可绕过黑号限制等”，但事实上它们最主要的作用还是方便你调用第三方下载器来稳定地下载网盘文件，并不是“破解”网盘的限制来提高下载速度的。</p><p>以「百度网盘」实际使用为例，对于免费用户，通过脚本获取到真实下载链接下载，速度很多时候都能感受到有所提升，但如果你希望用插件后能白嫖到稳如 SVIP 的速度，那还是贪心了。这个“不限速”只是相对的，因此，依旧建议经常下载的同学开通超级会员，确实稳定太多而且基本都能做到满速下载。同样的，其他如迅雷网盘、阿里云盘、天翼云盘等等大多也都是如此。</p><h3 id="备用脚本"><a href="#备用脚本" class="headerlink" title="备用脚本"></a>备用脚本</h3><p><strong>TT助手脚本</strong>： <a class="btn-anzhiyu outline" href="https://greasyfork.org/scripts/465078-tt%E5%8A%A9%E6%89%8B-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%B7%A5%E5%85%B7%E7%AE%B1%E7%9B%B4%E9%93%BE%E8%A7%A3%E6%9E%90-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/code/%E3%80%90TT%E5%8A%A9%E6%89%8B%E3%80%91%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%B7%A5%E5%85%B7%E7%AE%B1%E7%9B%B4%E9%93%BE%E8%A7%A3%E6%9E%90%20%E2%80%94%E2%80%94%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0.user.js"   title="安装脚本"><i class="anzhiyufont anzhiyu-icon-circle-arrow-right"></i><span>安装脚本</span></a></p><p><strong>千千下载助手</strong>： <a class="btn-anzhiyu outline" href="https://greasyfork.org/scripts/463171-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%8D%83%E5%8D%83%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B/code/%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E5%8D%83%E5%8D%83%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B.user.js"   title="安装脚本"><i class="anzhiyufont anzhiyu-icon-circle-arrow-right"></i><span>安装脚本</span></a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 百度网盘 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用acme申请免费google ssl证书</title>
       <link href="//post/acme-google-ssl.html"/>
       <url>//post/acme-google-ssl.html</url>
