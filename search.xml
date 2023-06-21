@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Ubuntu：sudo时不用输入密码的方法</title>
+      <link href="//post/ubuntu_sudo.html"/>
+      <url>//post/ubuntu_sudo.html</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://img.6ird.com/image/ubuntu_sudo.jpg" alt="ubuntu sudo"></p><p>在启动时进入安全模式，这时是用root登录的，执行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 740 /etc/sudoers</span><br></pre></td></tr></table></figure><p>然后打开<strong>vim &#x2F;etc&#x2F;sudoers</strong>这个文件，把最后一行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#User privilege specification</span></span><br><span class="line"></span><br><span class="line">root    ALL=(ALL:ALL)  ALL</span><br><span class="line">ucr     ALL=(ALL:ALL)  ALL</span><br><span class="line"></span><br><span class="line"><span class="comment">#Allow members of group sudo to execute any command</span></span><br><span class="line"></span><br><span class="line">%sudo ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure><p>改为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#User privilege specification</span></span><br><span class="line"></span><br><span class="line">root    ALL=(ALL:ALL)  ALL</span><br><span class="line">ubuntu     ALL=(ALL:ALL) NOPASSWD:ALL</span><br><span class="line"></span><br><span class="line"><span class="comment">#Allow members of group sudo to execute any command</span></span><br><span class="line"></span><br><span class="line">%sudo ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre></td></tr></table></figure><p>保存退出。</p><p>执行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> 0440 /etc/sudoers</span><br></pre></td></tr></table></figure><p>把文件权限修改回来，这样就搞定了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ubuntu </tag>
+            
+            <tag> sudo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>千万不要用酒精清洁电脑屏幕</title>
       <link href="//post/screen_alcohol.html"/>
       <url>//post/screen_alcohol.html</url>
