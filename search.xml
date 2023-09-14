@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Ubuntu 逻辑分区(LVM)扩容的教程</title>
+      <link href="//post/Ubuntu_LVM.html"/>
+      <url>//post/Ubuntu_LVM.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="Ubuntu系统使用LVM扩容逻辑卷"><a href="#Ubuntu系统使用LVM扩容逻辑卷" class="headerlink" title="Ubuntu系统使用LVM扩容逻辑卷"></a>Ubuntu系统使用LVM扩容逻辑卷</h1><h2 id="查看当前卷组和逻辑卷"><a href="#查看当前卷组和逻辑卷" class="headerlink" title="查看当前卷组和逻辑卷"></a>查看当前卷组和逻辑卷</h2><p>使用 <code>lsblk</code>命令查看当前磁盘及分区情况。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NAME            MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT</span><br><span class="line">sda               8:0    0    40G  0 disk </span><br><span class="line">├─sda1            8:1    0   512M  0 part /boot</span><br><span class="line">└─sda2            8:2    0  39.5G  0 part </span><br><span class="line">  ├─ubuntu--vg-root   253:0    0 37.9G  0 lvm  /</span><br><span class="line">  └─ubuntu--vg-swap_1 253:1    0   1.6G  0 lvm  [SWAP]</span><br><span class="line">sdb               8:16   0    10G  0 disk</span><br></pre></td></tr></table></figure><p>这里我们可以看到名为ubuntu-vg的卷组中有一个ubuntu-lv逻辑卷。</p><p>使用 <code>lvdisplay</code>查看逻辑卷详情。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">--- Logical volume ---</span><br><span class="line">  LV Path                /dev/ubuntu-vg/root</span><br><span class="line">  LV Name                root</span><br><span class="line">  VG Name                ubuntu-vg</span><br><span class="line">  LV UUID                OOOOXXXX-XXXX-XXXX-XXXX-OOOOYYYYYYYY </span><br><span class="line">  LV Write Access        read/write</span><br><span class="line">  LV Creation host, time ubuntu-server, 2022-02-22 00:37:34 +0800</span><br><span class="line">  LV Status              available</span><br><span class="line">  # open                 1</span><br><span class="line">  LV Size                37.9 GiB</span><br><span class="line">  Current LE             9710</span><br><span class="line">  Segments               1</span><br><span class="line">  Allocation             inherit</span><br><span class="line">  Read ahead sectors     auto</span><br><span class="line">  - currently set to     256</span><br><span class="line">  Block device           253:0</span><br></pre></td></tr></table></figure><h2 id="新增物理卷"><a href="#新增物理卷" class="headerlink" title="新增物理卷"></a>新增物理卷</h2><p>先添加一块新磁盘 <code>/dev/sdb</code>,这里我使用一个10G的磁盘作为示例。</p><p>使用 <code>pvcreate</code>将新磁盘创建为物理卷。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pvcreate /dev/sdb</span><br><span class="line">  Physical volume &quot;/dev/sdb&quot; successfully created.</span><br></pre></td></tr></table></figure><h2 id="扩展卷组"><a href="#扩展卷组" class="headerlink" title="扩展卷组"></a>扩展卷组</h2><p>使用 <code>vgextend</code>命令将新建的物理卷扩展到现有的卷组中。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vgextend ubuntu-vg /dev/sdb</span><br><span class="line">  Volume group &quot;ubuntu-vg&quot; successfully extended</span><br></pre></td></tr></table></figure><h2 id="扩展逻辑卷"><a href="#扩展逻辑卷" class="headerlink" title="扩展逻辑卷"></a>扩展逻辑卷</h2><p>最后使用 <code>lvextend</code>扩展逻辑卷容量。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv </span><br><span class="line">  Size of logical volume ubuntu-vg/root changed from 37.9 GiB (9710 extents) to 47.9 GiB (12287 extents).</span><br><span class="line">  Logical volume root successfully resized.</span><br></pre></td></tr></table></figure><p>扩容完成!可以看到逻辑卷空间已经增大。</p><p>使用 <code>df -h</code>重新查看磁盘空间,发现新增空间已经可以使用了。</p><p>到此,使用LVM对Ubuntu的逻辑卷完成扩容。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LVM </tag>
+            
+            <tag> Ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux密码登录改成密钥登录教程</title>
       <link href="//post/linux_password.html"/>
       <url>//post/linux_password.html</url>
